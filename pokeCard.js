@@ -4,6 +4,7 @@ template.innerHTML = `
     <style>
         .poke-card {
             background: #f4f4f4;
+            font-family: Arial, sans-serif;
             width: 500px;
             display: flex;
             margin-bottom: 25px;
@@ -20,6 +21,10 @@ template.innerHTML = `
         <img />
         <div>
             <h3></h3>
+            <div class="info">
+                <p>Altura: <slot name="height" /></p>
+                <p>Peso: <slot name="weight" /></p>
+            </div>
         </div>
     </div>
 
