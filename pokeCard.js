@@ -2,17 +2,27 @@ const template = document.createElement('template');
 
 template.innerHTML = `
     <style>
-        img {
+        .poke-card {
+            background: #f4f4f4;
+            width: 500px;
+            display: flex;
+            margin-bottom: 25px;
+            border-bottom: #1a1a1a 5px solid;
+        }
+
+        .poke-card img {
             width: 150px;
-        }    
-    
-        h3 {
-                color: coral;
+            margin-right: 25px;
         }
     </style>
 
-    <img />
-    <h3></h3>
+    <div class="poke-card">
+        <img />
+        <div>
+            <h3></h3>
+        </div>
+    </div>
+
 `;
 
 class PokeCard extends HTMLElement {
