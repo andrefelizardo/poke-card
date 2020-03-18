@@ -1,7 +1,8 @@
 class PokeCard extends HTMLElement {
     constructor() {
         super();
-        this.innerHTML = `PokeCard`;
+        const name = this.getAttribute('name'); 
+        this.innerHTML = `${name}`;
     }
 }
 
