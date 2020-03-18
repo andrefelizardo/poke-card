@@ -12,8 +12,17 @@ template.innerHTML = `
         }
 
         .poke-card img {
-            width: 150px;
+            width: 170px;
             margin-right: 25px;
+        }
+
+        .poke-card #toggle-info {
+            cursor: pointer;
+            background: #1a1a1a;
+            color: #fff;
+            border: 0;
+            border-radius: 5px;
+            padding: 5px 10px;
         }
     </style>
 
@@ -25,6 +34,7 @@ template.innerHTML = `
                 <p>Altura: <slot name="height" /></p>
                 <p>Peso: <slot name="weight" /></p>
             </div>
+            <button id="toggle-info">Hide info</button>
         </div>
     </div>
 
@@ -42,6 +52,23 @@ class PokeCard extends HTMLElement {
     this.shadowRoot.querySelector('h3').innerText = name;
     this.shadowRoot.querySelector('img').setAttribute('src', imageURL);
   }
+
+  toggleInfo() {
+    console.log('toggle info');
+  }
+
+  connectedCallback() {
+    this.shadowRoot
+      .querySelector('#toggle-info')
+      .addEventListener('click', () => this.toggleInfo());
+  }
+
+  disconnectedCallback() {
+    this.shadowRoot
+      .querySelector('#toggle-info')
+      .removeEventListener();
+  }
+
 }
 
 window.customElements.define('poke-card', PokeCard);
