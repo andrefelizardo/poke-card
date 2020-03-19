@@ -44,6 +44,8 @@ class PokeCard extends HTMLElement {
   constructor() {
     super();
 
+    this.showInfo = true;
+
     this.attachShadow({ mode: 'open' });
     this.shadowRoot.appendChild(template.content.cloneNode(true));
 
@@ -54,7 +56,19 @@ class PokeCard extends HTMLElement {
   }
 
   toggleInfo() {
-    console.log('toggle info');
+
+    this.showInfo = !this.showInfo;
+    
+    const info = this.shadowRoot.querySelector('.info');
+    const infoBtn = this.shadowRoot.querySelector('#toggle-info');
+
+    if (this.showInfo) {
+      info.style.display = 'block';
+      infoBtn.innerText = 'Hide info';
+    } else {
+      info.style.display = 'none';
+      infoBtn.innerText = 'Show info';
+    }
   }
 
   connectedCallback() {
@@ -64,11 +78,8 @@ class PokeCard extends HTMLElement {
   }
 
   disconnectedCallback() {
-    this.shadowRoot
-      .querySelector('#toggle-info')
-      .removeEventListener();
+    this.shadowRoot.querySelector('#toggle-info').removeEventListener();
   }
-
 }
 
 window.customElements.define('poke-card', PokeCard);
